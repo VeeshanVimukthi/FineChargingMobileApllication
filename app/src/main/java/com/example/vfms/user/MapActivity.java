@@ -3,13 +3,15 @@ package com.example.vfms.user;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.List;
 
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
@@ -63,15 +68,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
         mapFragment.getMapAsync(this);
 
+        // Add this code to set up the back button functionality
+        ImageButton backButton = findViewById(R.id.Back_btn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implement code to go back to the previous page (Profile_page)
+                onBackPressed();
+            }
+        });
     }
+
     //////////////////////////menu//////////////////
-    @Override
-    public boolean onCreateOptionsMenu(Menu m) {
-
-        getMenuInflater().inflate(R.menu.mymenu,m);
-
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu m) {
+//
+//        getMenuInflater().inflate(R.menu.mymenu,m);
+//
+//        return true;
+//    }
 
 
     @Override
@@ -150,7 +165,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
         currentLocationMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(5));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(0));
 
         if(client != null)
         {
@@ -174,11 +189,35 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             // Handle the search button click (you already have this code)
             EditText tf_location = findViewById(R.id.TF_location);
             String location = tf_location.getText().toString();
-            // ...
-        } else if (viewId == R.id.B_post_office) {
+
+            List<Address> addressList;
+
+            if (!location.equals("")) {
+                Geocoder geocoder = new Geocoder(this);
+
+                try {
+                    addressList = geocoder.getFromLocationName(location, 5);
+
+                    if (addressList != null) {
+                        for (int i = 0; i < addressList.size(); i++) {
+                            LatLng latLng = new LatLng(addressList.get(i).getLatitude(), addressList.get(i).getLongitude());
+                            MarkerOptions markerOptions = new MarkerOptions();
+                            markerOptions.position(latLng);
+                            markerOptions.title(location);
+                            mMap.addMarker(markerOptions);
+                            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }else if (viewId == R.id.B_post_office) {
             type = "post_office"; // Change to "post_office"
             toastMessage = "Searching Nearby Post Offices"; // Change the toast message
-        } else if (viewId == R.id.B_hopistals) {
+        } else if (viewId == R.id.B_hopistal) {
             type = "hospital";
             toastMessage = "Searching Nearby Hospitals";
         } else if (viewId == R.id.B_schools) {
@@ -262,6 +301,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         else
             return true;
     }
+
+
 
 
     @Override

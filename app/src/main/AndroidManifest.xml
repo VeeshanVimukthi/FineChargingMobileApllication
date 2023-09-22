@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Add this to your AndroidManifest.xml -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Add your Google Maps API key here -->
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyArHyg3NnMdDb3KKpnCcqoqEQ8WiflaRMc" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.VFMS"
+        tools:targetApi="31">
+        <activity
+            android:name=".user.MapActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyArHyg3NnMdDb3KKpnCcqoqEQ8WiflaRMc" />
+
+        <activity
+            android:name=".user.User_licence_image_View"
+            android:exported="false" />
+        <activity
+            android:name=".police_officer.Officer_Profile"
+            android:exported="false" />
+        <activity
+            android:name=".user.Update_Profile"
+            android:exported="false" />
+        <activity
+            android:name=".user.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.RegistrationPage"
+            android:exported="false" />
+        <activity
+            android:name=".user.Profile_page"
+            android:exported="false" />
+        <activity
+            android:name=".police_officer.Police_Register_admin"
+            android:exported="false" />
+        <activity
+            android:name=".police_officer.Police_Officers_Update_Register_Details"
+            android:exported="false" />
+        <activity
+            android:name=".police_officer.Police_Officer_Profile"
+            android:exported="false" />
+        <activity
+            android:name=".police_officer.Police_Officer_Homepage"
+            android:exported="false" />
+        <activity
+            android:name=".user.PayFine"
+            android:exported="false" />
+        <activity
+            android:name=".police_officer.Officer_Impose_Fine"
+            android:exported="false" />
+        <activity
+            android:name=".user.LoginPage"
+            android:exported="false" />
+        <activity
+            android:name=".user.Home_Page"
+            android:exported="false" />
+        <activity
+            android:name=".user.History_page"
+            android:exported="false" />
+        <activity
+            android:name=".user.Fine_History"
+            android:exported="false" />
+        <activity
+            android:name=".user.Advance_Profile_Page"
+            android:exported="false" />
+        <activity
+            android:name=".user.Splash_Screen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

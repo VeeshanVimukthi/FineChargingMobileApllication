@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.PayFine">
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="258dp"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="35dp"
+        android:foregroundGravity=""
+        android:gravity="start"
+        android:text="Impose Fine"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.597"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ScrollView -->
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="67dp"
+        android:layout_height="64dp"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="315dp"
+        android:layout_marginBottom="-18dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Back Icon"
+        android:src="@drawable/back_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="630dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="41dp"
+        android:paddingBottom="10dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+
+            <!-- Driver Name -->
+            <EditText
+                android:id="@+id/Offence_Driver_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Driver Name" />
+
+            <!-- Address -->
+            <EditText
+                android:id="@+id/Offence_Address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Offence_Driver_Name"
+                android:layout_marginTop="10dp"
+                android:hint="Address" />
+
+            <!-- Vehicle Number  -->
+            <EditText
+                android:id="@+id/Vehicle_Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Offence_Address"
+                android:layout_marginTop="10dp"
+                android:hint="Vehicle Number " />
+
+            <!-- Licensee Number -->
+            <EditText
+                android:id="@+id/Licensee_Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Vehicle_Number"
+                android:layout_marginTop="10dp"
+                android:hint="License Number" />
+
+            <!-- Nature of offence -->
+            <EditText
+                android:id="@+id/Nature_Of_Offence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Licensee_Number"
+                android:layout_marginTop="10dp"
+                android:hint="Nature of offence" />
+
+            <!-- Fine Amount -->
+            <EditText
+                android:id="@+id/FineAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Nature_Of_Offence"
+                android:layout_marginTop="10dp"
+                android:hint="Fine Amount" />
+
+            <!-- Policemen ID -->
+            <EditText
+                android:id="@+id/Policemen_Id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FineAmount"
+                android:layout_marginTop="10dp"
+                android:hint="Policemen Id" />
+
+
+            <!-- Date -->
+
+            <EditText
+                android:id="@+id/textViewDate"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@+id/textViewTime"
+                android:layout_marginTop="7dp"
+                android:hint="Current Date"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+            <!-- Time -->
+
+            <EditText
+                android:id="@+id/textViewTime"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@+id/Policemen_Id"
+                android:layout_marginTop="7dp"
+                android:hint="Current Time"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="18dp"
+                android:background="@drawable/button_outline"
+                android:text="Submit"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

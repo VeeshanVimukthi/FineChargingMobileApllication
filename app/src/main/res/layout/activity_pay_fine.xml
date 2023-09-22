@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.PayFine">
+
+    <!-- Your existing TextView -->
+
+    <!-- Your existing ImageButton -->
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginBottom="35dp"
+        android:foregroundGravity=""
+        android:gravity="start"
+        android:text="Pay Fine"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.597"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="345dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Back Icon"
+        android:src="@drawable/back_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <!-- Your existing ScrollView -->
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="604dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="67dp"
+        android:paddingBottom="10dp">
+
+        <!-- Your existing RelativeLayout -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <!-- Add the EditText fields here -->
+
+            <!-- Card Holder Name -->
+            <EditText
+                android:id="@+id/editTextCardHolderName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Card Holder Name" />
+
+            <!-- Card Number -->
+            <EditText
+                android:id="@+id/editTextCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextCardHolderName"
+                android:layout_marginTop="10dp"
+                android:hint="Card Number" />
+
+            <!-- Expiry Date -->
+            <EditText
+                android:id="@+id/editTextExpiryDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextCardNumber"
+                android:layout_marginTop="10dp"
+                android:hint="Expiry Date" />
+
+            <!-- Licensee Number -->
+            <EditText
+                android:id="@+id/editTextLicenseeNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextExpiryDate"
+                android:layout_marginTop="10dp"
+                android:hint="Licensee Number" />
+
+            <!-- Vehicle Number -->
+            <EditText
+                android:id="@+id/editTextVehicleNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextLicenseeNumber"
+                android:layout_marginTop="10dp"
+                android:hint="Vehicle Number" />
+
+            <!-- Fine Amount -->
+            <EditText
+                android:id="@+id/editTextFineAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextVehicleNumber"
+                android:layout_marginTop="10dp"
+                android:hint="Fine Amount" />
+
+            <!-- Policemen Number -->
+            <EditText
+                android:id="@+id/editTextPolicemenNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextFineAmount"
+                android:layout_marginTop="10dp"
+                android:hint="Policemen Number" />
+
+            <!-- Pay Button -->
+            <Button
+                android:id="@+id/buttonPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_outline"
+                android:text="Pay"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".police_officer.Police_Register_admin">
+
+    <ImageButton
+        android:id="@+id/logoutBtn"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="317dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="667dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/logout_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="34dp"
+        android:gravity="start"
+        android:text="Register officers"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.597"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="65dp"
+        android:layout_height="61dp"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="335dp"
+        android:layout_marginBottom="-11dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Back Icon"
+        android:src="@drawable/back_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="508dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="156dp"
+        android:paddingBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="590dp"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/layoutConformPassword">
+
+                <ImageView
+                    android:id="@+id/profileImageView"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/circular_image_view"
+                    android:src="@android:drawable/ic_menu_gallery" />
+
+                <!-- Select Image Button -->
+                <Button
+                    android:id="@+id/selectImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="66dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="49dp"
+                    android:layout_toEndOf="@+id/profileImageView"
+                    android:text="Select Image" />
+            </RelativeLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutID"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="8dp"
+                android:hint="Plolice Officer Name"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
+                app:endIconTint="#1A237E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutEmail"
+                app:startIconTint="#1A237E">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pName"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutFuleName"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/layoutID"
+                android:layout_marginTop="9dp"
+                android:hint="Officer NIC"
+                app:boxBackgroundMode="outline"
+                app:counterEnabled="true"
+                app:counterMaxLength="12"
+                app:endIconMode="clear_text"
+                app:endIconTint="#1A237E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutEmail"
+                app:startIconTint="#1A237E">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pNIC"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutStartPlace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layoutFuleName"
+                android:layout_marginTop="14dp"
+                android:hint="Contact number"
+                app:boxBackgroundMode="outline"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                app:endIconTint="#1A237E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutEmail"
+                app:startIconTint="#1A237E">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutLicenceNo"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/layoutStartPlace"
+                android:layout_marginTop="5dp"
+                android:hint="Officer ID"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
+                app:endIconTint="#1A237E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutEmail"
+                app:startIconTint="#1A237E">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pId"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutEmail"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/layoutLicenceNo"
+                android:layout_marginTop="5dp"
+                android:hint="Email"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
+                app:endIconTint="#1A237E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutFuleName"
+                app:startIconTint="#1A237E">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pRegEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/layoutLicenceNo"
+                    android:layout_marginTop="9dp"
+                    android:inputType="textWebEmailAddress|text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutStartPlace1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutEmail"
+                android:layout_marginTop="12dp"
+                android:hint="Password"
+                app:boxBackgroundMode="outline"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconMode="password_toggle"
+                app:endIconTint="#1A237E"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutStartPlace"
+                app:layout_constraintVertical_bias="0.0"
+                app:startIconTint="#1A237E">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pRegPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutConformPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutStartPlace1"
+                android:layout_marginTop="0dp"
+                android:hint="Confirm Password"
+                app:boxBackgroundMode="outline"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconMode="password_toggle"
+                app:endIconTint="#1A237E"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutStartPlace"
+                app:layout_constraintVertical_bias="0.0"
+                app:startIconTint="#1A237E">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pRegPasswordC"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/p_registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_below="@id/layoutConformPassword"
+                android:layout_marginTop="150dp"
+                android:background="@drawable/btn_blue"
+                android:text="Register"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_above="@+id/btnUpdate"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/line_drawable" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="69dp"
+        android:background="@drawable/button_outline"
+        android:text="Update" />
+
+
+</RelativeLayout>

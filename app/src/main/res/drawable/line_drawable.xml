@@ -1,0 +1,9 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="line">
+            <stroke
+                android:width="2dp"
+                android:color="#009688" /> <!-- Replace #FF0000 with the color you desire -->
+        </shape>
+    </item>
+</layer-list>

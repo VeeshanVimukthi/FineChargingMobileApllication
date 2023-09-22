@@ -7,9 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Add this to your AndroidManifest.xml -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Add your Google Maps API key here -->
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyArHyg3NnMdDb3KKpnCcqoqEQ8WiflaRMc" />
+    
 
     <application
         android:allowBackup="true"
@@ -37,9 +35,6 @@
             android:exported="false" />
         <activity
             android:name=".user.Update_Profile"
-            android:exported="false" />
-        <activity
-            android:name=".user.MainActivity"
             android:exported="false" />
         <activity
             android:name=".user.RegistrationPage"

@@ -38,23 +38,6 @@ public class Profile_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-        View btnSignIn = findViewById(R.id.Advance_Profile);
-
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Profile_page.this, Advance_Profile_Page.class));
-                finish(); // Close this activity to prevent going back to registration after login
-            }
-        });
-        View uploadButton = findViewById(R.id.uploadButton);
-        uploadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Profile_page.this, Update_Profile.class));
-                finish(); // Close this activity to prevent going back to registration after login
-            }
-        });
 
         // Initialize views
         usernameTextView = findViewById(R.id.Username);
@@ -69,6 +52,24 @@ public class Profile_page extends AppCompatActivity {
 
         // Fetch and display user profile data
         displayUserProfile();
+
+        View btnSignIn = findViewById(R.id.Advance_Profile);
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Profile_page.this, Advance_Profile_Page.class));
+                finish(); // Close this activity to prevent going back to registration after login
+            }
+        });
+
+        View uploadButton = findViewById(R.id.uploadButton);
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Profile_page.this, Update_Profile.class));
+                finish(); // Close this activity to prevent going back to registration after login
+            }
+        });
     }
 
     private void displayUserProfile() {

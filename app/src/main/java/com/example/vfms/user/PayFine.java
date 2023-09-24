@@ -132,7 +132,7 @@ public class PayFine extends AppCompatActivity {
                     // Set an error message for invalid CCV
                     textInputLayoutCCV.setError("Invalid CCV");
                 } else {
-                    // All fields are valid, proceed with payment
+
                     // You can perform the payment logic here (e.g., initiate payment)
 
                     // Example: Show a success message using Toast

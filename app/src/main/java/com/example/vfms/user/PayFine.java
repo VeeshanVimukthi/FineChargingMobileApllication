@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -136,7 +137,7 @@ public class PayFine extends AppCompatActivity {
 
                     // Example: Show a success message using Toast
                     // Toast.makeText(getApplicationContext(), "Payment successful", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(getApplicationContext(), "Payment successful", Toast.LENGTH_SHORT).show();
                     // After successful payment, you can navigate to another screen or perform desired actions.
                 }
             }

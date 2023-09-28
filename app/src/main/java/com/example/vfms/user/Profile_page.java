@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,8 @@ public class Profile_page extends AppCompatActivity {
     private TextView emailTextView;
     private TextView nicTextView;
     private TextView contactTextView;
+
+    private TextView licenceTextView;
     private ImageView profileImageView;
 
     private DatabaseReference userDbRef;
@@ -38,8 +41,33 @@ public class Profile_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-        View btnSignIn = findViewById(R.id.Advance_Profile);
 
+        // Initialize views
+        usernameTextView = findViewById(R.id.Username);
+        emailTextView = findViewById(R.id.emailText);
+        nicTextView = findViewById(R.id.nicText);
+        contactTextView = findViewById(R.id.contactText);
+        profileImageView = findViewById(R.id.profilePictureImageView);
+        licenceTextView = findViewById(R.id.LicenceText);
+
+        // Initialize Firebase
+        userDbRef = FirebaseDatabase.getInstance().getReference("Users");
+        mAuth = FirebaseAuth.getInstance();
+
+
+        ImageButton backButton = findViewById(R.id.Back_btn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implement code to go back to the previous page (Profile_page)
+                onBackPressed();
+            }
+        });
+
+        // Fetch and display user profile data
+        displayUserProfile();
+
+        View btnSignIn = findViewById(R.id.Advance_Profile);
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +75,7 @@ public class Profile_page extends AppCompatActivity {
                 finish(); // Close this activity to prevent going back to registration after login
             }
         });
+
         View uploadButton = findViewById(R.id.uploadButton);
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,20 +84,6 @@ public class Profile_page extends AppCompatActivity {
                 finish(); // Close this activity to prevent going back to registration after login
             }
         });
-
-        // Initialize views
-        usernameTextView = findViewById(R.id.Username);
-        emailTextView = findViewById(R.id.emailText);
-        nicTextView = findViewById(R.id.nicText);
-        contactTextView = findViewById(R.id.contactText);
-        profileImageView = findViewById(R.id.profilePictureImageView);
-
-        // Initialize Firebase
-        userDbRef = FirebaseDatabase.getInstance().getReference("Users");
-        mAuth = FirebaseAuth.getInstance();
-
-        // Fetch and display user profile data
-        displayUserProfile();
     }
 
     private void displayUserProfile() {
@@ -93,7 +108,7 @@ public class Profile_page extends AppCompatActivity {
                                 emailTextView.setText(userProfile.getEmail());
                                 nicTextView.setText(userProfile.getNic());
                                 contactTextView.setText(userProfile.getContact());
-
+                                licenceTextView.setText(userProfile.getLicenceNo());
                                 // Load and set the profile image from Base64 string
                                 String profileImageBase64 = userProfile.getProfileImageBase64();
                                 if (profileImageBase64 != null && !profileImageBase64.isEmpty()) {

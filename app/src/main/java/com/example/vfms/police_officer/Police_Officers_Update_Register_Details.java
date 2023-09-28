@@ -72,22 +72,22 @@ public class Police_Officers_Update_Register_Details extends AppCompatActivity {
             }
         });
 
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get updated information from EditText fields
-                String name = pName.getText().toString();
-                String nic = pNIC.getText().toString();
-                String contact = pContact.getText().toString();
-                String email = pRegEmail.getText().toString();
-
-                // Update the officer's information in Firebase
-                PoliceOfficer updatedOfficer = new PoliceOfficer(name, nic, contact, email);
-                // Assuming you have the Officer ID as a child in your database
-                databaseReference.child(updatedOfficer.getOfficerId()).setValue(updatedOfficer);
-
-                Toast.makeText(Police_Officers_Update_Register_Details.this, "Officer information updated", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        updateButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Get updated information from EditText fields
+//                String name = pName.getText().toString();
+//                String nic = pNIC.getText().toString();
+//                String contact = pContact.getText().toString();
+////                String email = pRegEmail.getText().toString();
+//
+//                // Update the officer's information in Firebase
+//                PoliceOfficer updatedOfficer = new PoliceOfficer(name, nic, contact);
+//                // Assuming you have the Officer ID as a child in your database
+//                databaseReference.child(updatedOfficer.getOfficerId()).setValue(updatedOfficer);
+//
+//                Toast.makeText(Police_Officers_Update_Register_Details.this, "Officer information updated", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }

@@ -13,6 +13,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -84,6 +85,19 @@ public class Advance_Profile_Page extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_IMAGE1);
             }
         });
+        ImageButton backButton = findViewById(R.id.backButton);
+        // Set an OnClickListener to the ImageButton
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implement code to go back to the previous page
+//                onBackPressed();
+                Intent intent = new Intent(Advance_Profile_Page.this, Profile_page.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override

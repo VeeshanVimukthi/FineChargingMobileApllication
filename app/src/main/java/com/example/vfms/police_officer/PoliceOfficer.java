@@ -17,7 +17,7 @@ public class PoliceOfficer implements Parcelable {
         // Default constructor required for Firebase
     }
 
-    public PoliceOfficer(String userId, String name, String nic, String contact) {
+    public PoliceOfficer(String userId, String name, String nic, String contact, String email) {
         this.userId = userId;
         this.name = name;
         this.nic = nic;

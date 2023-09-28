@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.PayFine">
+    tools:context=".police_officer.Officer_Impose_fine_Update">
 
     <ImageButton
         android:id="@+id/Back_btn"
@@ -32,7 +32,7 @@
         android:layout_marginEnd="115dp"
         android:layout_marginBottom="35dp"
         android:gravity="center"
-        android:text="Pay Fine"
+        android:text="Update Fine"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,8 +41,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="363dp"
-        android:layout_height="570dp"
+        android:layout_width="wrap_content"
+        android:layout_height="524dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -50,147 +50,113 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="90dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="117dp"
         android:paddingBottom="10dp">
 
         <!-- Your existing RelativeLayout -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="700dp"
+            android:layout_height="500dp"
             android:orientation="vertical"
             android:paddingBottom="10dp">
 
             <!-- Add the EditText fields here -->
 
             <!-- Card Holder Name -->
-            <EditText
-                android:id="@+id/textViewDriverName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:clickable="false"
-                android:hint="DriverName" />
-
-            <EditText
-                android:id="@+id/textViewLicenseNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDriverName"
-                android:layout_marginTop="10dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:clickable="false"
-                android:hint="LicenseNumber" />
-
-
-            <EditText
-                android:id="@+id/editTextVehicleNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewLicenseNumber"
-                android:layout_marginTop="10dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:clickable="false"
-                android:hint="VehicleNumber" />
-
-            <EditText
-                android:id="@+id/textViewDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/editTextVehicleNumber"
-                android:layout_marginTop="10dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:clickable="false"
-                android:hint="Date" />
-
-            <EditText
-                android:id="@+id/ViewFineAmount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDate"
-                android:layout_marginTop="10dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:clickable="false"
-                android:hint="Fine Amount" />
-
-            <EditText
-                android:id="@+id/editTextCardHolderName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ViewFineAmount"
-                android:layout_marginTop="10dp"
-                android:hint="Card Holder Name" />
-
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutCardNumber"
+                android:id="@+id/textInputLayoutDriverName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editTextCardHolderName"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextCardNumber"
+                    android:id="@+id/editTextDriverName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Card Number"
-                    android:inputType="number"
-                    android:maxLength="19" />
+                    android:hint="Driver Name" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutExpiryDate"
+                android:id="@+id/textInputLayoutLicenseNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textInputLayoutCardNumber"
+                android:layout_below="@id/textInputLayoutDriverName"
                 android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextExpiryDate"
+                    android:id="@+id/editTextLicenseNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="MM/YY"
-                    android:inputType="number"
-                    android:maxLength="5" />
+                    android:hint="License Number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutCCV"
+                android:id="@+id/textInputLayoutVehicleNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textInputLayoutExpiryDate"
+                android:layout_below="@id/textInputLayoutLicenseNumber"
                 android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextCCV"
+                    android:id="@+id/editTextVehicleNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CCV"
-                    android:inputType="number"
-                    android:maxLength="3"  />
+                    android:hint="Vehicle Number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Policemen Number -->
-            <EditText
-                android:id="@+id/editTextPolicemenNumber"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutFineAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textInputLayoutCCV"
-                android:layout_marginTop="10dp"
-                android:hint="Policemen Number" />
+                android:layout_below="@id/textInputLayoutVehicleNumber"
+                android:layout_marginTop="10dp">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextFineAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fine Amount" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textInputLayoutFineAmount"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutNatureOfOffence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textInputLayoutAddress"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNatureOfOffence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nature of Offence" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <!-- Pay Button -->
             <Button
-                android:id="@+id/buttonPay"
+                android:id="@+id/saveButton"
                 android:layout_width="301dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -200,7 +166,7 @@
                 android:layout_marginEnd="33dp"
                 android:layout_marginBottom="54dp"
                 android:background="@drawable/button_outline"
-                android:text="Pay"
+                android:text="Update Fine"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -52,6 +53,23 @@ public class Update_Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+
+
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implement code to go back to the previous page
+//                onBackPressed();
+                Intent intent = new Intent(Update_Profile.this, Profile_page.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+
+
 
         // Initialize views and Firebase
         usernameEditText = findViewById(R.id.editTextUsername);

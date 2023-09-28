@@ -1,11 +1,11 @@
 package com.example.vfms.police_officer;
 
-import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.vfms.user.Advance_Profile_Page;
 import com.example.vfms.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,15 +37,27 @@ public class Police_Officer_Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_police_officer_profile);
-        View btnSignIn = findViewById(R.id.Advance_Profile);
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+//        View btnSignIn = findViewById(R.id.Advance_Profile);
+
+
+        // Add this code to set up the back button functionality
+        ImageButton backButton = findViewById(R.id.Back_btn);
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Police_Officer_Profile.this, Advance_Profile_Page.class));
-                finish(); // Close this activity to prevent going back to registration after login
+            public void onClick(View v) {
+                // Implement code to go back to the previous page (Profile_page)
+                onBackPressed();
             }
         });
+
+//        btnSignIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Police_Officer_Profile.this, Advance_Profile_Page.class));
+//                finish(); // Close this activity to prevent going back to registration after login
+//            }
+//        });
 
         // Initialize views
         usernameTextView = findViewById(R.id.Username);

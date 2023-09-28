@@ -56,12 +56,12 @@ public class Users {
         this.email = email;
     }
 
-    public String getLicenseNumber() {
+    public String getLicenceNo() {
         return LicenseNumber;
     }
 
-    public void setLicenseNumber(String LicenseNumber) {
-        this.LicenseNumber = LicenseNumber;
+    public void setLicenceNo(String licenceNo) {
+        this.LicenseNumber = licenceNo;
     }
 
     public String getContact() {

@@ -1,9 +1,11 @@
 package com.example.vfms.police_officer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,8 +22,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import com.example.vfms.config.RandomIdGenerator;
-
 public class Officer_Impose_Fine extends AppCompatActivity {
 
     private EditText driverNameEditText;
@@ -34,8 +34,6 @@ public class Officer_Impose_Fine extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
-
-    private RandomIdGenerator randomIdGenerator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +59,16 @@ public class Officer_Impose_Fine extends AppCompatActivity {
                 saveDataToFirebase();
             }
         });
+
+        // Add this code to set up the back button functionality
+        ImageButton backButton = findViewById(R.id.Back_btn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implement code to go back to the previous page (Profile_page)
+                onBackPressed();
+            }
+        });
     }
 
     private void saveDataToFirebase() {
@@ -77,35 +85,46 @@ public class Officer_Impose_Fine extends AppCompatActivity {
         String licenseNumber = licenseNumberEditText.getText().toString();
         String natureOfOffence = natureOfOffenceEditText.getText().toString();
         String fineAmount = fineAmountEditText.getText().toString();
-//        String policemenId = policemenIdEditText.getText().toString();
+        // String policemenId = policemenIdEditText.getText().toString();
 
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
         String currentDate = sdfDate.format(new Date());
         String currentTime = sdfTime.format(new Date());
 
-        // Generate a random ID
-        String randomId = RandomIdGenerator.generateRandomId(10);
+        // Generate a unique FineId based on date and time
+        String fineId = generateFineId();
 
-        DatabaseReference userRef = databaseReference.child(randomId);
+        DatabaseReference fineRef = databaseReference.child(fineId);
 
-        userRef.child("DriverName").setValue(driverName);
-        userRef.child("Address").setValue(address);
-        userRef.child("VehicleNumber").setValue(vehicleNumber);
-        userRef.child("LicenseNumber").setValue(licenseNumber);
-        userRef.child("NatureOfOffence").setValue(natureOfOffence);
-        userRef.child("FineAmount").setValue(fineAmount);
-        userRef.child("PolicemenId").setValue(userId);
-        userRef.child("Date").setValue(currentDate);
-        userRef.child("Time").setValue(currentTime, new DatabaseReference.CompletionListener() {
+        fineRef.child("FineId").setValue(fineId);
+        fineRef.child("DriverName").setValue(driverName);
+        fineRef.child("Address").setValue(address);
+        fineRef.child("VehicleNumber").setValue(vehicleNumber);
+        fineRef.child("LicenseNumber").setValue(licenseNumber);
+        fineRef.child("NatureOfOffence").setValue(natureOfOffence);
+        fineRef.child("FineAmount").setValue(fineAmount);
+        fineRef.child("PolicemenId").setValue(userId);
+        fineRef.child("Date").setValue(currentDate);
+        fineRef.child("Time").setValue(currentTime, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@NonNull DatabaseError error, @NonNull DatabaseReference ref) {
                 if (error == null) {
                     Toast.makeText(Officer_Impose_Fine.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(Officer_Impose_Fine.this, Police_Officer_Homepage.class);
+                    startActivity(intent);
+                    finish(); // Finish the current activity to prevent going back to it
                 } else {
                     Toast.makeText(Officer_Impose_Fine.this, "Failed to save data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    // Generate a unique FineId based on date and time (you can implement your own logic here)
+    private String generateFineId() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
+        return "FINE" + sdf.format(new Date());
     }
 }

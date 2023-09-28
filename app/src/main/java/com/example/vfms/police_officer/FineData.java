@@ -1,6 +1,8 @@
 package com.example.vfms.police_officer;
 
 public class FineData {
+
+    private String FineId;
     private String Address;
     private String Date;
     private String DriverName;
@@ -10,6 +12,9 @@ public class FineData {
     private String PolicemenId;
     private String Time;
     private String VehicleNumber;
+
+
+
 
     public String getAddress() {
         return Address;
@@ -82,4 +87,14 @@ public class FineData {
     public void setVehicleNumber(String vehicleNumber) {
         VehicleNumber = vehicleNumber;
     }
+
+    public String getFineId() {
+        return FineId;
+    }
+
+    public void setFineId(String FineId) {
+        this.FineId = FineId;
+    }
+
+
 }

@@ -190,7 +190,7 @@ public class  Police_Register_admin extends AppCompatActivity {
                                 String userId = currentUser.getUid();
 
                                 // Save user data to Firebase Database
-                                PoliceOfficer policeOfficer = new PoliceOfficer(userId, name, nic, contact);
+                                PoliceOfficer policeOfficer = new PoliceOfficer(userId, name, nic, contact,email);
 
                                 // Convert the selected image to a Base64 encoded string
                                 if (selectedImageBitmap != null) {

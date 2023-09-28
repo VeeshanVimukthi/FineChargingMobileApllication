@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,6 +31,18 @@ public class User_licence_image_View extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_licence_image_view);
+
+
+
+
+        ImageButton backButton = findViewById(R.id.Back_btn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implement code to go back to the previous page (Profile_page)
+                onBackPressed();
+            }
+        });
 
         licenseFrontImageView = findViewById(R.id.imageView1);
         licenseBackImageView = findViewById(R.id.imageView2);

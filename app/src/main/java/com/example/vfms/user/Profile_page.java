@@ -62,7 +62,11 @@ public class Profile_page extends AppCompatActivity {
                 // Implement code to go back to the previous page (Profile_page)
                 onBackPressed();
             }
+
+
         });
+
+
 
         // Fetch and display user profile data
         displayUserProfile();

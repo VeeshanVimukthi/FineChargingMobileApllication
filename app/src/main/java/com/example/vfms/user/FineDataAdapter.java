@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vfms.R;
@@ -18,11 +20,13 @@ import java.util.List;
 public class FineDataAdapter extends RecyclerView.Adapter<FineDataAdapter.FineDataViewHolder> {
     private List<FineData> fineDataList;
 
-
-
     public FineDataAdapter(List<FineData> fineDataList) {
         this.fineDataList = fineDataList;
     }
+
+
+
+
 
     @NonNull
     @Override
@@ -45,24 +49,43 @@ public class FineDataAdapter extends RecyclerView.Adapter<FineDataAdapter.FineDa
         holder.textViewVehicleNumber.setText("Vehicle Number: " + fineData.getVehicleNumber());
 
         // Handle "Pay" button click
+        // Handle "Pay" button click
         holder.buttonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), PayFine.class);
+                if (!fineData.isPaymentStatus()) {
+                    // Payment has not been made, allow the payment process
 
-                // Pass the necessary details to the PayFine activity
-                intent.putExtra("driverName", fineData.getDriverName());
-                intent.putExtra("licenseNumber", fineData.getLicenseNumber());
-                intent.putExtra("fineAmount", fineData.getFineAmount());
-                intent.putExtra("natureOfOffence", fineData.getNatureOfOffence());
-                intent.putExtra("date", fineData.getDate());
-                intent.putExtra("time", fineData.getTime());
-                intent.putExtra("address", fineData.getAddress());
-                intent.putExtra("vehicleNumber", fineData.getVehicleNumber());
+                    Intent intent = new Intent(v.getContext(), PayFine.class);
 
-                v.getContext().startActivity(intent);
+                    // Pass the necessary details to the PayFine activity, including fineId
+                    intent.putExtra("driverName", fineData.getDriverName());
+                    intent.putExtra("licenseNumber", fineData.getLicenseNumber());
+                    intent.putExtra("fineAmount", fineData.getFineAmount());
+                    intent.putExtra("natureOfOffence", fineData.getNatureOfOffence());
+                    intent.putExtra("date", fineData.getDate());
+                    intent.putExtra("time", fineData.getTime());
+                    intent.putExtra("address", fineData.getAddress());
+                    intent.putExtra("vehicleNumber", fineData.getVehicleNumber());
+                    intent.putExtra("fineId", fineData.getFineId()); // Include fineId
+
+                    v.getContext().startActivity(intent);
+                } else {
+                    Toast.makeText(v.getContext(), "Payment has already been Done.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+
+
+        // Check the paymentStatus and set the background color accordingly
+        if (fineData.isPaymentStatus()) {
+            // Payment was successful (true), set a green background color
+            holder.CardviewOfficer.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.successfulPaymentColor));
+        } else {
+            // Payment was not successful (false), set a different background color
+            holder.CardviewOfficer.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.unsuccessfulPaymentColor));
+        }
     }
 
     @Override
@@ -85,6 +108,7 @@ public class FineDataAdapter extends RecyclerView.Adapter<FineDataAdapter.FineDa
         public TextView textViewAddress;
         public TextView textViewVehicleNumber;
         public Button buttonPay;
+        public androidx.cardview.widget.CardView CardviewOfficer; // Added for CardView reference
 
         public FineDataViewHolder(View itemView) {
             super(itemView);
@@ -97,6 +121,7 @@ public class FineDataAdapter extends RecyclerView.Adapter<FineDataAdapter.FineDa
             textViewAddress = itemView.findViewById(R.id.textViewAddress);
             textViewVehicleNumber = itemView.findViewById(R.id.textViewVehicleNumber);
             buttonPay = itemView.findViewById(R.id.buttonPay);
+            CardviewOfficer = itemView.findViewById(R.id.newCardView1); // Initialize CardView reference
         }
     }
 }

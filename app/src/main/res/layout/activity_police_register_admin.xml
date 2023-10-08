@@ -4,79 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".police_officer.Police_Register_admin">
+    android:background="@drawable/admin_background"
+    tools:context=".admin.Police_Register_admin">
 
     <ImageButton
-        android:id="@+id/logoutBtn"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/Back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="317dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="667dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/logout33"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="22dp"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:src="@drawable/back_arrow" />
+
+    <!-- Your existing ScrollView -->
+
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_width="267dp"
+        android:layout_height="44dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="34dp"
-        android:gravity="start"
-        android:text="Register officers"
-        android:textSize="24sp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="35dp"
+        android:gravity="center"
+        android:text="Officers Register"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="65dp"
-        android:layout_height="61dp"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="335dp"
-        android:layout_marginBottom="-11dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="Back Icon"
-        android:src="@drawable/back_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="508dp"
+        android:layout_height="510dp"
         android:layout_below="@+id/textView5"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="-6dp"
         android:layout_marginEnd="22dp"
         android:layout_marginBottom="156dp"
         android:paddingBottom="10dp">
@@ -85,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="590dp"
             android:orientation="vertical"
-            android:paddingBottom="10dp">
+            android:paddingBottom="8dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -109,6 +83,8 @@
                     android:layout_marginStart="66dp"
                     android:layout_marginTop="35dp"
                     android:layout_marginEnd="49dp"
+                    android:textColor="@color/white"
+                    android:background="@color/bt_c"
                     android:layout_toEndOf="@+id/profileImageView"
                     android:text="Select Image" />
             </RelativeLayout>
@@ -119,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="8dp"
-                android:hint="Plolice Officer Name"
+                android:hint="Police Officer Name"
                 app:boxBackgroundMode="outline"
                 app:endIconMode="clear_text"
                 app:endIconTint="#1A237E"
@@ -260,7 +236,7 @@
                     android:id="@+id/pRegPass"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:inputType="text" />
+                    android:inputType="textPassword" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -290,7 +266,7 @@
                     android:id="@+id/pRegPasswordC"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:inputType="text" />
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

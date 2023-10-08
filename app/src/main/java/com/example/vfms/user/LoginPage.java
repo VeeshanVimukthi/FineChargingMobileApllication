@@ -15,9 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vfms.R;
+import com.example.vfms.admin.Admin_Home_page;
 import com.example.vfms.police_officer.PoliceOfficer;
 import com.example.vfms.police_officer.Police_Officer_Homepage;
-import com.example.vfms.police_officer.Police_Register_admin;
+import com.example.vfms.admin.Police_Register_admin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -194,7 +195,7 @@ public class LoginPage extends AppCompatActivity {
     }
 
     private void openAdminPage() {
-        Intent adminIntent = new Intent(getApplicationContext(), Police_Register_admin.class);
+        Intent adminIntent = new Intent(getApplicationContext(), Admin_Home_page.class);
         startActivity(adminIntent);
         finish(); // Close the LoginActivity
     }

@@ -1,6 +1,5 @@
 package com.example.vfms.user;
 
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,12 +13,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vfms.R;
+import com.example.vfms.police_officer.FineData;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
 public class PayFine extends AppCompatActivity {
+    private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,7 @@ public class PayFine extends AppCompatActivity {
         String fineAmount = getIntent().getStringExtra("fineAmount");
         String date = getIntent().getStringExtra("date");
         String vehicleNumber = getIntent().getStringExtra("vehicleNumber");
+        String fineId = getIntent().getStringExtra("fineId"); // Add this line to retrieve the FineId
 
         // Initialize TextViews to display the details
         EditText textViewDriverName = findViewById(R.id.textViewDriverName);
@@ -53,7 +58,6 @@ public class PayFine extends AppCompatActivity {
         TextInputLayout textInputLayoutCardNumber = findViewById(R.id.textInputLayoutCardNumber);
         TextInputLayout textInputLayoutExpiryDate = findViewById(R.id.textInputLayoutExpiryDate);
         TextInputLayout textInputLayoutCCV = findViewById(R.id.textInputLayoutCCV);
-
 
         // Add this code to set up the back button functionality
         ImageButton backButton = findViewById(R.id.Back_btn);
@@ -96,7 +100,6 @@ public class PayFine extends AppCompatActivity {
             }
         });
 
-
         // Add a TextWatcher to automatically insert "/" in the expiry date field
         editTextExpiryDate.addTextChangedListener(new TextWatcher() {
             @Override
@@ -118,7 +121,9 @@ public class PayFine extends AppCompatActivity {
             }
         });
 
-        // Add a click listener to your Pay button
+        // Initialize the Firebase Database reference
+        databaseReference = FirebaseDatabase.getInstance().getReference("Impose_Fine");
+
         Button buttonPay = findViewById(R.id.buttonPay);
         buttonPay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,19 +148,22 @@ public class PayFine extends AppCompatActivity {
                     // Set an error message for invalid CCV
                     textInputLayoutCCV.setError("Invalid CCV");
                 } else {
+                    // Payment is valid, set the payment status to true (paid)
+                    savePaymentStatusToFirebase(fineId, true);
 
-                    // You can perform the payment logic here (e.g., initiate payment)
+                    // You can also add additional logic for payment processing here
+                    // For example, call a payment gateway API to process the payment
 
-                    // Example: Show a success message using Toast
-                    // Toast.makeText(getApplicationContext(), "Payment successful", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(), "Payment successful", Toast.LENGTH_SHORT).show();
-                    // After successful payment, you can navigate to another screen or perform desired actions.
+                    // Show a success message to the user
+                    Toast.makeText(PayFine.this, "Payment Successful", Toast.LENGTH_SHORT).show();
+
+                    // Finish the activity or navigate to a success page as needed
+                    finish();
                 }
             }
         });
     }
 
-    // Function to validate the expiry date (you can customize this)
     // Function to validate the expiry date (you can customize this)
     private boolean isValidExpiryDate(String expiryDate) {
         // Check if the expiry date is in MM/YY format
@@ -182,4 +190,12 @@ public class PayFine extends AppCompatActivity {
         return false; // Invalid expiry date
     }
 
+    // Function to save the payment status to Firebase
+    private void savePaymentStatusToFirebase(String fineId, boolean paymentStatus) {
+        // Create a new payment node under the fine_payments node with the FineId as the key
+        DatabaseReference paymentRef = databaseReference.child(fineId);
+
+        // Save the payment status as a Boolean value
+        paymentRef.child("paymentStatus").setValue(paymentStatus);
+    }
 }

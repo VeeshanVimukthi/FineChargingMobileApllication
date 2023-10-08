@@ -12,7 +12,11 @@ public class FineData {
     private String PolicemenId;
     private String Time;
     private String VehicleNumber;
+    private boolean isPaid; // Add a field to store payment status
 
+    private boolean paymentStatus; // Added boolean attribute
+
+    private boolean updatedByPoliceOfficer; // Added field to track updates by police officer
 
 
 
@@ -96,5 +100,30 @@ public class FineData {
         this.FineId = FineId;
     }
 
+
+
+//    public boolean isPaid() {
+//        return isPaid;
+//    }
+//
+//    public void setPaid(boolean paid) {
+//        isPaid = paid;
+//    }
+
+    public boolean isPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(boolean paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public boolean isUpdatedByPoliceOfficer() {
+        return updatedByPoliceOfficer;
+    }
+
+    public void setUpdatedByPoliceOfficer(boolean updatedByPoliceOfficer) {
+        this.updatedByPoliceOfficer = updatedByPoliceOfficer;
+    }
 
 }

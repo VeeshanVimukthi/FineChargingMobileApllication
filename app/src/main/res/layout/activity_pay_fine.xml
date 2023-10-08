@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".user.PayFine">
 
     <ImageButton
@@ -33,7 +34,7 @@
         android:layout_marginBottom="35dp"
         android:gravity="center"
         android:text="Pay Fine"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
@@ -184,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutCCV"
                 android:layout_marginTop="10dp"
-                android:hint="Policemen Number" />
+                android:hint="Policemen ID Number" />
 
 
 
@@ -193,15 +194,16 @@
                 android:id="@+id/buttonPay"
                 android:layout_width="301dp"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextPolicemenNumber"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="23dp"
-                android:layout_marginEnd="33dp"
-                android:layout_marginBottom="54dp"
-                android:background="@drawable/button_outline"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/btn_blue"
                 android:text="Pay"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>

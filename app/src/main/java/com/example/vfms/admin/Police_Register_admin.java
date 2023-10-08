@@ -1,4 +1,4 @@
-package com.example.vfms.police_officer;
+package com.example.vfms.admin;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.vfms.police_officer.PoliceOfficer;
 import com.example.vfms.user.LoginPage;
 import com.example.vfms.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,6 +52,20 @@ public class  Police_Register_admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_police_register_admin);
+
+
+
+        // Add this code to set up the back button functionality
+        ImageButton backButton = findViewById(R.id.Back_btn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implement code to go back to the previous page (Profile_page)
+                onBackPressed();
+            }
+        });
+
+
 
         // Initialize Firebase Auth and Database
         mAuth = FirebaseAuth.getInstance();
@@ -93,13 +108,7 @@ public class  Police_Register_admin extends AppCompatActivity {
             }
         });
 
-        ImageButton logoutButton = findViewById(R.id.logoutBtn);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showLogoutConfirmationDialog();
-            }
-        });
+
         Button openNextPageButton = findViewById(R.id.btnUpdate);
         openNextPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +122,7 @@ public class  Police_Register_admin extends AppCompatActivity {
         final String name = pName.getText().toString().trim();
         final String nic = pNIC.getText().toString().trim();
         final String contact = pContact.getText().toString().trim();
-        final String officerId = pId.getText().toString().trim();
+        final String officerNumber = pId.getText().toString().trim();
         final String email = pRegEmail.getText().toString().trim();
         final String password = pRegPass.getText().toString().trim();
         String confirmPassword = pRegPasswordC.getText().toString().trim();
@@ -137,7 +146,7 @@ public class  Police_Register_admin extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(officerId)) {
+        if (TextUtils.isEmpty(officerNumber)) {
             pId.setError("Officer ID cannot be empty");
             pId.requestFocus();
             return;
@@ -190,7 +199,7 @@ public class  Police_Register_admin extends AppCompatActivity {
                                 String userId = currentUser.getUid();
 
                                 // Save user data to Firebase Database
-                                PoliceOfficer policeOfficer = new PoliceOfficer(userId, name, nic, contact,email);
+                                PoliceOfficer policeOfficer = new PoliceOfficer(userId, officerNumber, name, nic, contact, email);
 
                                 // Convert the selected image to a Base64 encoded string
                                 if (selectedImageBitmap != null) {
@@ -201,7 +210,7 @@ public class  Police_Register_admin extends AppCompatActivity {
                                 mDatabase.child(userId).setValue(policeOfficer);
                                 Toast.makeText(Police_Register_admin.this, "Registration successful.", Toast.LENGTH_SHORT).show();
                                 mAuth.signOut();
-                                startActivity(new Intent(Police_Register_admin.this, LoginPage.class));
+                                startActivity(new Intent(Police_Register_admin.this, Admin_Home_page.class));
                                 finish();
                             }
                         } else {

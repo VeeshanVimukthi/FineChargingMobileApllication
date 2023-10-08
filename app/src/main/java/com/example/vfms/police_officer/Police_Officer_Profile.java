@@ -27,6 +27,7 @@ public class Police_Officer_Profile extends AppCompatActivity {
     private TextView usernameTextView;
     private TextView emailTextView;
     private TextView nicTextView;
+    private TextView OfficerNumber;
     private TextView contactTextView;
     private ImageView profileImageView;
 
@@ -65,6 +66,7 @@ public class Police_Officer_Profile extends AppCompatActivity {
         nicTextView = findViewById(R.id.nicText);
         contactTextView = findViewById(R.id.contactText);
         profileImageView = findViewById(R.id.profilePictureImageView);
+        OfficerNumber = findViewById(R.id.OfficerIDText);
 
         // Initialize Firebase
         officerDbRef = FirebaseDatabase.getInstance().getReference("police_officers"); // Update the reference
@@ -88,7 +90,7 @@ public class Police_Officer_Profile extends AppCompatActivity {
                             emailTextView.setText(officerProfile.getEmail());
                             nicTextView.setText(officerProfile.getNic());
                             contactTextView.setText(officerProfile.getContact());
-
+                            OfficerNumber.setText(officerProfile.getOfficerNumber());
                             // Load and set the profile image from Base64 string
                             String profileImageBase64 = officerProfile.getprofileImage();
                             if (profileImageBase64 != null && !profileImageBase64.isEmpty()) {

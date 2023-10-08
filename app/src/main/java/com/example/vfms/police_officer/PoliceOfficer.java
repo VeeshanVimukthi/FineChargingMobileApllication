@@ -3,13 +3,14 @@ package com.example.vfms.police_officer;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class PoliceOfficer implements Parcelable {
+public class PoliceOfficer  {
 
     private String userId;
+
+    private String officerNumber;
     private String name;
     private String nic;
     private String contact;
-    private String officerId;
     private String email;
     private String profileImage; // Store the profile image as a Base64 encoded string
 
@@ -17,12 +18,12 @@ public class PoliceOfficer implements Parcelable {
         // Default constructor required for Firebase
     }
 
-    public PoliceOfficer(String userId, String name, String nic, String contact, String email) {
+    public PoliceOfficer(String userId, String officerNumber, String name, String nic, String contact, String email) {
         this.userId = userId;
         this.name = name;
         this.nic = nic;
         this.contact = contact;
-        this.officerId = officerId;
+        this.officerNumber = officerNumber;
         this.email = email;
     }
 
@@ -42,58 +43,47 @@ public class PoliceOfficer implements Parcelable {
         return contact;
     }
 
-    public String getOfficerId() {
-        return officerId;
-    }
+
 
     public String getEmail() {
         return email;
     }
-
     public String getprofileImage() {
         return profileImage;
+    }
+
+
+
+
+    public String getOfficerNumber() {
+        return officerNumber;
+    }
+
+    public void setOfficerNumber(String officerNumber) {
+        this.officerNumber = officerNumber;
+    }
+
+    // Setter methods for the remaining fields
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setprofileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 
-    // Parcelable implementation for passing PoliceOfficer objects between activities
-    protected PoliceOfficer(Parcel in) {
-        userId = in.readString();
-        name = in.readString();
-        nic = in.readString();
-        contact = in.readString();
-        officerId = in.readString();
-        email = in.readString();
-        profileImage = in.readString();
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(userId);
-        dest.writeString(name);
-        dest.writeString(nic);
-        dest.writeString(contact);
-        dest.writeString(officerId);
-        dest.writeString(email);
-        dest.writeString(profileImage);
-    }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<PoliceOfficer> CREATOR = new Creator<PoliceOfficer>() {
-        @Override
-        public PoliceOfficer createFromParcel(Parcel in) {
-            return new PoliceOfficer(in);
-        }
-
-        @Override
-        public PoliceOfficer[] newArray(int size) {
-            return new PoliceOfficer[size];
-        }
-    };
 }

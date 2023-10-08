@@ -3,7 +3,7 @@
         <shape android:shape="line">
             <stroke
                 android:width="2dp"
-                android:color="#009688" /> <!-- Replace #FF0000 with the color you desire -->
+                android:color="@color/bt_e" /> <!-- Replace #FF0000 with the color you desire -->
         </shape>
     </item>
 </layer-list>

@@ -4,19 +4,23 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/background">
 
 
     <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
+        android:id="@+id/Back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_back"
-        android:src="@drawable/back_arrow" />
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
@@ -124,7 +128,7 @@
     </RelativeLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutID"
+        android:id="@+id/expireDateTextInputLayout"
         android:layout_width="363dp"
         android:layout_height="79dp"
         android:layout_below="@+id/BackImage"
@@ -134,33 +138,34 @@
         android:layout_marginTop="-17dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="15dp"
-        android:hint="Enter Licence Expire Date"
+        android:hint="Licence Expire Date (YYYY-MM-DD)"
         app:endIconTint="#1A237E"
         app:startIconTint="#1A237E">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etName"
+            android:id="@+id/etExpireDate"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="63dp"
+            android:imeOptions="actionDone"
             android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/uploadButton1"
         android:layout_width="204dp"
         android:layout_height="65dp"
-        android:layout_below="@+id/layoutID"
+        android:layout_below="@+id/expireDateTextInputLayout"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="39dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginBottom="118dp"
         android:background="@drawable/btn_blue"
         android:text="Upload Images"
-        android:textSize="15dp" />
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
 </RelativeLayout>
 

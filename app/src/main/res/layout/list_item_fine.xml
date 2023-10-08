@@ -7,6 +7,7 @@
     android:padding="2dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/successfulPaymentCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -27,57 +28,88 @@
                 android:id="@+id/textViewDriverName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Driver Name: " />
+                android:text="Driver Name          : " />
 
             <TextView
                 android:id="@+id/textViewLicenseNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="License Number: " />
+                android:text="License Number   : " />
 
             <TextView
                 android:id="@+id/textViewFineAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fine Amount: " />
+                android:text="Fine Amount          : " />
 
             <TextView
                 android:id="@+id/textViewNatureOfOffence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nature of Offence: " />
+                android:text="Nature of Offence : " />
 
             <TextView
                 android:id="@+id/textViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date: " />
+                android:text="Date                         : " />
 
             <TextView
                 android:id="@+id/textViewTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time: " />
+                android:text="Time                        : " />
 
             <TextView
                 android:id="@+id/textViewAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Address: " />
+                android:text="Address                  : " />
 
             <TextView
                 android:id="@+id/textViewVehicleNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vehicle Number: " />
+                android:text="Vehicle Number    : " />
 
-            <Button
-                android:id="@+id/buttonPay"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pay"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp">
+
+
+                <Button
+                    android:id="@+id/buttonPay"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toEndOf="@+id/newCardView1"
+                    android:background="@drawable/btn_blue"
+                    android:textSize="15sp"
+                    android:text="Pay"
+                    android:textColor="@color/white" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/newCardView1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/Green"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

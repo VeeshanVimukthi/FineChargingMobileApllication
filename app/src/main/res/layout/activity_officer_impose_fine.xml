@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/officer_background"
     tools:context=".user.PayFine">
 
+
+    <!-- ScrollView -->
 
     <TextView
         android:id="@+id/textView5"
@@ -14,21 +17,19 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="103dp"
+        android:layout_marginStart="61dp"
         android:layout_marginTop="14dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="72dp"
         android:layout_marginBottom="35dp"
         android:foregroundGravity=""
-        android:gravity="start"
+        android:gravity="center"
         android:text="Impose Fine"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- ScrollView -->
 
     <ImageButton
         android:id="@+id/Back_btn"
@@ -44,23 +45,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginTop="86dp"-->
+<!--        android:layout_marginEnd="17dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        app:cardCornerRadius="15dp">-->
+
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="630dp"
+        android:layout_height="622dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="13dp"
         android:paddingBottom="10dp">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="10dp">
 
@@ -69,7 +82,7 @@
             <EditText
                 android:id="@+id/Offence_Driver_Name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:hint="Driver Name" />
 
@@ -155,16 +168,19 @@
                 android:id="@+id/buttonSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/Policemen_Id"
                 android:layout_marginStart="28dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="28dp"
-                android:layout_marginBottom="18dp"
-                android:background="@drawable/button_outline"
+                android:background="@drawable/btn_blue"
                 android:text="Submit"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
 
     </ScrollView>
+
+<!--</androidx.cardview.widget.CardView>-->
 </RelativeLayout>

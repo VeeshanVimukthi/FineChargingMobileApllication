@@ -5,10 +5,10 @@
     />
 <gradient
     android:angle="45"
-    android:centerX="35%"
-    android:centerColor="@color/Green"
-    android:startColor="@color/Green"
-    android:endColor="@color/colorPrimary"
+    android:centerX="2%"
+    android:centerColor="@color/bt_s"
+    android:startColor="@color/bt_c"
+    android:endColor="@color/bt_e"
     android:type="linear"
     />
 <padding

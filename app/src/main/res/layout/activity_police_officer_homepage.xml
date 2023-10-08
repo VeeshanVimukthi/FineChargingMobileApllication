@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/getstart"
+    android:background="@drawable/officer_background"
     tools:context=".police_officer.Police_Officer_Homepage">
 
 
@@ -33,13 +33,13 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:background="@android:color/transparent"
-        android:src="@drawable/logout33"
+        android:src="@drawable/logoutnew"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.959"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119" />
+        app:layout_constraintVertical_bias="0.099" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardView1"
@@ -84,6 +84,7 @@
         android:background="@drawable/btn_blue"
         android:text="Impose Fine"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.541"
@@ -97,26 +98,13 @@
         android:layout_height="86dp"
         android:background="@drawable/button_outline"
         android:text="Officer Profile"
-        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textColor="@color/bt_e"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
-
-    <Button
-        android:id="@+id/officer_Profile"
-        android:layout_width="318dp"
-        android:layout_height="86dp"
-        android:background="@drawable/button_outline"
-        android:text="Update"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
 
     <Button
         android:id="@+id/updateImposeFine"
@@ -125,13 +113,14 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/btn_blue"
         android:text="Update Impose Fine"
+        android:textSize="16sp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.869" />
+        app:layout_constraintVertical_bias="0.688" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

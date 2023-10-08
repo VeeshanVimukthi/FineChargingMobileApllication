@@ -55,7 +55,7 @@ public class Update_Profile extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
 
 
-        ImageButton backButton = findViewById(R.id.backButton);
+        ImageButton backButton = findViewById(R.id.Back_btn);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

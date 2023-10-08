@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.vfms.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -52,51 +56,78 @@ public class OfficerFineDataAdapter extends RecyclerView.Adapter<OfficerFineData
         holder.textViewAddress.setText("Address: " + fineData.getAddress());
         holder.textViewVehicleNumber.setText("Vehicle Number: " + fineData.getVehicleNumber());
 
+        // Check the paymentStatus and set the background color accordingly
+        if (fineData.isPaymentStatus()) {
+            // Payment was successful (true), set a green background color
+            holder.cardview.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.successfulPaymentColor));
+
+            // If payment is successful, hide the "Update" button
+
+//            Toast.makeText(holder.itemView.getContext(), "Payment has already been done.", Toast.LENGTH_SHORT).show();
+        } else {
+            // Payment was not successful (false), set a different background color
+            holder.cardview.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.unsuccessfulPaymentColor));
+            // Show the "Update" button
+            holder.buttonUpdate.setVisibility(View.VISIBLE);
+            holder.buttonDelete.setVisibility(View.VISIBLE);
+        }
+
+        // Modify the onClick listener for the "Update" button
         // Modify the onClick listener for the "Update" button
         holder.buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle the "Update" button click here
-                Intent intent = new Intent(context, Officer_Impose_fine_Update.class);
+                if (fineData.isPaymentStatus()) {
+                    // Payment has already been done, show a toast message
+                    Toast.makeText(v.getContext(), "Payment has already been Done.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle the "Update" button click here
+                    Intent intent = new Intent(context, Officer_Impose_fine_Update.class);
 
-                // Pass the necessary details to the Officer_Impose_fine_Update activity
-                intent.putExtra("fineId", fineData.getFineId()); // Add the Fine ID
-                intent.putExtra("driverName", fineData.getDriverName());
-                intent.putExtra("licenseNumber", fineData.getLicenseNumber());
-                intent.putExtra("fineAmount", fineData.getFineAmount());
-                intent.putExtra("natureOfOffence", fineData.getNatureOfOffence());
-                intent.putExtra("date", fineData.getDate());
-                intent.putExtra("time", fineData.getTime());
-                intent.putExtra("address", fineData.getAddress());
-                intent.putExtra("vehicleNumber", fineData.getVehicleNumber());
+                    // Pass the necessary details to the Officer_Impose_fine_Update activity
+                    intent.putExtra("fineId", fineData.getFineId()); // Add the Fine ID
+                    intent.putExtra("driverName", fineData.getDriverName());
+                    intent.putExtra("licenseNumber", fineData.getLicenseNumber());
+                    intent.putExtra("fineAmount", fineData.getFineAmount());
+                    intent.putExtra("natureOfOffence", fineData.getNatureOfOffence());
+                    intent.putExtra("date", fineData.getDate());
+                    intent.putExtra("time", fineData.getTime());
+                    intent.putExtra("address", fineData.getAddress());
+                    intent.putExtra("vehicleNumber", fineData.getVehicleNumber());
 
-                // Start the activity to update the fine
-                context.startActivity(intent);
+                    // Start the activity to update the fine
+                    context.startActivity(intent);
+                }
             }
         });
 
-
-        // Set a click listener for the "Delete" button
+// Set a click listener for the "Delete" button
         holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle the "Delete" button click here
-                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                if (currentUser != null && fineData != null) {
-                    String loggedInUserId = currentUser.getUid();
-                    String fineOwnerId = fineData.getPolicemenId();
+                if (fineData.isPaymentStatus()) {
+                    // Payment has already been done, show a toast message
+                    Toast.makeText(v.getContext(), "Payment has already been Done.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle the "Delete" button click here
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                    if (currentUser != null && fineData != null) {
+                        String loggedInUserId = currentUser.getUid();
+                        String fineOwnerId = fineData.getPolicemenId();
 
-                    // Check if the logged-in user is authorized to delete the fine
-                    if (loggedInUserId.equals(fineOwnerId)) {
-                        // The logged-in user is authorized to delete the fine
-                        showDeleteConfirmationDialog(fineData); // Show confirmation dialog
-                    } else {
-                        // The logged-in user is not authorized to delete this fine
-                        showAlert("Authorization Error", "You are not authorized to delete this fine.");
+                        // Check if the logged-in user is authorized to delete the fine
+                        if (loggedInUserId.equals(fineOwnerId)) {
+                            // The logged-in user is authorized to delete the fine
+                            showDeleteConfirmationDialog(fineData); // Show confirmation dialog
+                        } else {
+                            // The logged-in user is not authorized to delete this fine
+                            showAlert("Authorization Error", "You are not authorized to delete this fine.");
+                        }
                     }
                 }
             }
         });
+
     }
 
     public void setData(List<FineData> newData) {
@@ -176,7 +207,8 @@ public class OfficerFineDataAdapter extends RecyclerView.Adapter<OfficerFineData
         TextView textViewTime;
         TextView textViewAddress;
         TextView textViewVehicleNumber;
-        Button buttonDelete,buttonUpdate;
+        Button buttonDelete, buttonUpdate;
+        CardView cardview; // Added CardView reference
 
         public FineViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -190,6 +222,7 @@ public class OfficerFineDataAdapter extends RecyclerView.Adapter<OfficerFineData
             textViewVehicleNumber = itemView.findViewById(R.id.textViewVehicleNumber);
             buttonDelete = itemView.findViewById(R.id.Delete);
             buttonUpdate = itemView.findViewById(R.id.Update);
+            cardview = itemView.findViewById(R.id.newCardView); // Initialize the CardView
         }
     }
 }

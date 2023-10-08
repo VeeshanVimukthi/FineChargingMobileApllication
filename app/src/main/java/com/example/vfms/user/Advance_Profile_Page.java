@@ -8,7 +8,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher; // Added import for TextWatcher
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -52,7 +54,7 @@ public class Advance_Profile_Page extends AppCompatActivity {
 
     private ImageView imageView1, imageView2;
     private Button button1, button2, uploadButton1;
-    private TextInputEditText etName;
+    private TextInputEditText etExpireDate;
 
     private DatabaseReference usersRef;
     private FirebaseUser currentUser;
@@ -71,7 +73,45 @@ public class Advance_Profile_Page extends AppCompatActivity {
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         uploadButton1 = findViewById(R.id.uploadButton1);
-        etName = findViewById(R.id.etName);
+        etExpireDate = findViewById(R.id.etExpireDate);
+
+        // Add TextWatcher to format the etExpireDate EditText
+        etExpireDate.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This method is called before the text is changed.
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // This method is called when the text is changed.
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = s.toString().trim();
+
+                // Remove hyphens and any non-digit characters from the text
+                String cleanedText = text.replaceAll("[^0-9]", "");
+
+                if (cleanedText.length() > 8) {
+                    cleanedText = cleanedText.substring(0, 10);
+                }
+                // Add hyphens in the appropriate positions
+                if (cleanedText.length() > 4) {
+                    cleanedText = cleanedText.substring(0, 4) + "-" + cleanedText.substring(4);
+                }
+                if (cleanedText.length() > 7) {
+                    cleanedText = cleanedText.substring(0, 7) + "-" + cleanedText.substring(7);
+                }
+
+                // Set the formatted text back to the EditText
+                etExpireDate.removeTextChangedListener(this);
+                etExpireDate.setText(cleanedText);
+                etExpireDate.setSelection(cleanedText.length());
+                etExpireDate.addTextChangedListener(this);
+            }
+        });
 
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -85,19 +125,17 @@ public class Advance_Profile_Page extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_IMAGE1);
             }
         });
-        ImageButton backButton = findViewById(R.id.backButton);
+        ImageButton backButton = findViewById(R.id.Back_btn);
         // Set an OnClickListener to the ImageButton
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Implement code to go back to the previous page
-//                onBackPressed();
                 Intent intent = new Intent(Advance_Profile_Page.this, Profile_page.class);
                 startActivity(intent);
                 finish();
             }
         });
-
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +152,7 @@ public class Advance_Profile_Page extends AppCompatActivity {
             }
         });
     }
+
 
     private void showPasswordVerificationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -136,7 +175,7 @@ public class Advance_Profile_Page extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        String expireDate = etName.getText().toString().trim();
+                                        String expireDate = etExpireDate.getText().toString().trim();
                                         if (!expireDate.isEmpty() && selectedBitmap1 != null && selectedBitmap2 != null) {
                                             uploadImagesAndSaveExpireDateToFirebase(selectedBitmap1, selectedBitmap2, expireDate);
                                         } else {
@@ -183,8 +222,9 @@ public class Advance_Profile_Page extends AppCompatActivity {
                     userRef.updateChildren(updates)
                             .addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
-                                    showToast("Images and expire date uploaded to Firebase");
                                     openProfilePage();
+                                    showToast("Images and expire date uploaded to Firebase");
+
                                 } else {
                                     showToast("Error uploading data: " + task.getException().getMessage());
                                 }
@@ -237,6 +277,9 @@ public class Advance_Profile_Page extends AppCompatActivity {
     private void openProfilePage() {
         Intent intent = new Intent(this, Profile_page.class);
         startActivity(intent);
-        finish();
+        onBackPressed();
+//        finish();
+
+
     }
 }

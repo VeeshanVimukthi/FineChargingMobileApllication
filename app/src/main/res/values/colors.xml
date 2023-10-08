@@ -22,4 +22,30 @@
     <color name="text_ash">#797979</color>
     <color name="btn">#616060</color>
     <color name="dark_blue">#3F51B5</color>
+
+
+    <color name="successfulPaymentColor">#B700FF00</color> <!-- Green -->
+    <color name="unsuccessfulPaymentColor">#B0FF0000</color> <!-- Red -->
+    <color name="updatedByPoliceColor">#FFFF00</color>
+
+    <color name="textColorBlack">#000000</color><!-- Licence expire date -->
+    <color name="textColorRed">#FF0000</color>
+
+
+    <!--  -->
+    <color name="bg_colors">#F8F9FB </color><!-- background Color -->
+    <color name="bg_color_dark">#CFCFCF</color><!-- background Color -->
+    <color name="tx_colors">#333333</color><!-- text Color -->
+    <color name="tx_c">#797979</color><!-- text Color2 -->
+
+    <color name="GreenLight">#009688</color>
+    <color name="GreenDark">#00796B</color>
+    <!-- Buton  -->
+    <color name="bt_s">#57C5B6</color>
+    <color name="bt_c">#159895</color>
+    <color name="bt_e">#002B5B</color>
+
+    <!-- progress bar  -->
+    <color name="circle_color">#CCCCCC</color>
+    <color name="progress_color">#FF0000</color>
 </resources>

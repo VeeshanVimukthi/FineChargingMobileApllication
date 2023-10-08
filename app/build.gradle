@@ -70,7 +70,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:your_version_here'
 
 
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     buildscript {
         repositories {
             // ...

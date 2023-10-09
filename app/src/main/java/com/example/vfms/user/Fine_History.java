@@ -2,10 +2,12 @@ package com.example.vfms.user;
 
 import static android.service.controls.ControlsProviderService.TAG;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vfms.R;
 import com.example.vfms.police_officer.FineData;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,9 +40,7 @@ public class Fine_History extends AppCompatActivity {
     // Declare a global variable to store the license number
     private String licenseNumber;
 
-
     DatabaseReference databaseReference;
-
     DatabaseReference userReference;
     private FirebaseAuth mAuth;
 
@@ -47,8 +48,6 @@ public class Fine_History extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fine_history);
-
-
 
         // Add this code to set up the back button functionality
         ImageButton backButton = findViewById(R.id.Back_btn);
@@ -82,7 +81,6 @@ public class Fine_History extends AppCompatActivity {
             userReference = FirebaseDatabase.getInstance().getReference("Users");
 
             // Assuming 'userId' and 'license' are already defined
-
             Query query = userReference.orderByChild("userId").equalTo(userId);
 
             query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -146,6 +144,32 @@ public class Fine_History extends AppCompatActivity {
                 }
             });
         }
+
+        // Initialize and set up the BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        // Set the "Profile" item as selected
+        bottomNavigationView.setSelectedItemId(R.id.action_fine_history);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.action_home) {
+                    startActivity(new Intent(Fine_History.this, Home_Page.class));
+                    finish();
+                    // Handle the Home action
+                    // You can start a new activity or perform any other action here
+                    return true;
+                } else if (item.getItemId() == R.id.action_fine_history) {
+                    // Fine History is already the current activity, so do nothing or refresh data if needed
+                    return true;
+                } else if (item.getItemId() == R.id.action_profile) {
+                    // Handle the Profile action
+                    startActivity(new Intent(Fine_History.this, Profile_page.class));
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
 
     }
 }

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -48,8 +49,6 @@ public class Home_Page extends AppCompatActivity {
     private ImposeFineAdapter adapter;
     private DatabaseReference imposeFineRef;
 
-
-
     private ViewPager imageSlider;
     private ImageSliderAdapter sliderAdapter;
     private int currentPage = 0;
@@ -57,13 +56,10 @@ public class Home_Page extends AppCompatActivity {
     private final long DELAY_MS = 3000; // Delay in milliseconds before auto-advancing to the next slide
     private final long PERIOD_MS = 3000; // Time in milliseconds between auto-advancing slides
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
-
 
         // Initialize ViewPager and adapter
         imageSlider = findViewById(R.id.image_slider);
@@ -74,7 +70,6 @@ public class Home_Page extends AppCompatActivity {
         // Start auto-scrolling timer
         startAutoSlider();
 
-
         // Initialize RecyclerView and adapter
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -83,8 +78,6 @@ public class Home_Page extends AppCompatActivity {
 
         // Initialize Firebase Database reference for "Impose Fine" node
         imposeFineRef = FirebaseDatabase.getInstance().getReference("Impose_Fine");
-
-
 
         Button profileButton1 = findViewById(R.id.Profile);
         profileButton1.setOnClickListener(view -> {
@@ -110,7 +103,6 @@ public class Home_Page extends AppCompatActivity {
             }
         });
 
-
         ImageButton refreshButton = findViewById(R.id.refreshButton);
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,8 +112,6 @@ public class Home_Page extends AppCompatActivity {
             }
 
             private void refreshPage() {
-
-
                 adapter.notifyDataSetChanged();
                 finish();
                 startActivity(getIntent());
@@ -206,6 +196,29 @@ public class Home_Page extends AppCompatActivity {
             showLogoutConfirmationDialog();
         });
 
+        // Initialize BottomNavigationView
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.action_home) {
+                    // Handle the Home action
+                    // You can start a new activity or perform any other action here
+                    return true;
+                } else if (item.getItemId() == R.id.action_fine_history) {
+                    // Handle the Fine History action
+                    startActivity(new Intent(Home_Page.this, Fine_History.class));
+                    finish();
+                    return true;
+                } else if (item.getItemId() == R.id.action_profile) {
+                    // Handle the Profile action
+                    startActivity(new Intent(Home_Page.this, Profile_page.class));
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void startAutoSlider() {
@@ -237,14 +250,6 @@ public class Home_Page extends AppCompatActivity {
             timer.cancel();
         }
     }
-
-
-
-
-
-
-
-
 
     private void showLogoutConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -289,6 +294,7 @@ public class Home_Page extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     private void showReminderDialog(long daysRemaining) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("License Expiration Reminder");
@@ -318,57 +324,4 @@ public class Home_Page extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-//    private void showReminderDialog(long daysRemaining) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("License Expiration Reminder");
-//
-//        TextView licenseExpirationDateTextView = findViewById(R.id.licence_date);
-//
-//        if (daysRemaining > 0) {
-//            builder.setMessage("Your license will expire in " + daysRemaining + " days. Don't forget to renew it soon!");
-//        } else {
-//            builder.setMessage("Your license has expired before " + daysRemaining +  " days. Please renew it.");
-//            licenseExpirationDateTextView.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-//
-//            // Set the dialog box background color for the "else" part
-//            AlertDialog dialog = builder.create();
-//            dialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_red_light);
-//
-//            // Handle OK button click for the "else" part
-//            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    // Handle the OK button click action here
-//                    // For example, you can navigate to a renewal screen or perform any other action
-//                }
-//            });
-//
-//            dialog.show();
-//            return; // Return to avoid showing the dialog twice
-//        }
-//
-//        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                // Handle OK button click for the "if" part
-//                // Add your logic for the OK button click in this block
-//            }
-//        });
-//
-//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                // Handle Cancel button click if needed
-//            }
-//        });
-//
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-//    }
-
-
 }
-
-
-

@@ -23,8 +23,8 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="238dp"
-        android:layout_height="37dp"
+        android:layout_width="310dp"
+        android:layout_height="36dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -32,8 +32,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="115dp"
         android:gravity="center"
-        android:text="Your Ofences"
-        android:textSize="30sp"
+        android:text="CURENT OFFENCES"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.395"

@@ -39,7 +39,6 @@ public class LoginPage extends AppCompatActivity {
     Button btnSignUp;
     Button btnLogin;
     Button btnForgotPassword; // Added for Forgot Password functionality
-
     FirebaseAuth mAuth;
     DatabaseReference usersDbRef;
     DatabaseReference policeOfficersDbRef;

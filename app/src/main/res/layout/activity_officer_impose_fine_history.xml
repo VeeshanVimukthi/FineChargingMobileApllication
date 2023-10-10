@@ -33,7 +33,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="115dp"
         android:gravity="center"
-        android:text="Officer Impose Fines"
+        android:text="IMPOSE FINE"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,10 +43,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViews"
-        android:layout_width="match_parent"
-        android:layout_height="707dp"
+        android:layout_width="401dp"
+        android:layout_height="672dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="35dp"
         android:gravity="center"
-        android:text="Officers List"
+        android:text="OFFICERS LIST"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

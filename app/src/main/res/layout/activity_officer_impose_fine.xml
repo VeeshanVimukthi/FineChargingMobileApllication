@@ -23,7 +23,7 @@
         android:layout_marginBottom="35dp"
         android:foregroundGravity=""
         android:gravity="center"
-        android:text="Impose Fine"
+        android:text="IMPOSE FINE"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,66 +79,112 @@
 
 
             <!-- Driver Name -->
-            <EditText
-                android:id="@+id/Offence_Driver_Name"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Offence_Driver_Name_TextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:hint="Driver Name" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Offence_Driver_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Driver Name" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Address -->
-            <EditText
-                android:id="@+id/Offence_Address"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Offence_Address_TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Offence_Driver_Name"
-                android:layout_marginTop="10dp"
-                android:hint="Address" />
+                android:layout_below="@id/Offence_Driver_Name_TextInputLayout"
+                android:layout_marginTop="10dp">
 
-            <!-- Vehicle Number  -->
-            <EditText
-                android:id="@+id/Vehicle_Number"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Offence_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Vehicle Number -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Vehicle_Number_TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Offence_Address"
-                android:layout_marginTop="10dp"
-                android:hint="Vehicle Number " />
+                android:layout_below="@id/Offence_Address_TextInputLayout"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Vehicle_Number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Vehicle Number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Licensee Number -->
-            <EditText
-                android:id="@+id/Licensee_Number"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Licensee_Number_TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Vehicle_Number"
-                android:layout_marginTop="10dp"
-                android:hint="License Number" />
+                android:layout_below="@id/Vehicle_Number_TextInputLayout"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Licensee_Number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="License Number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Nature of offence -->
-            <EditText
-                android:id="@+id/Nature_Of_Offence"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Nature_Of_Offence_TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Licensee_Number"
-                android:layout_marginTop="10dp"
-                android:hint="Nature of offence" />
+                android:layout_below="@id/Licensee_Number_TextInputLayout"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Nature_Of_Offence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nature of offence" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Fine Amount -->
-            <EditText
-                android:id="@+id/FineAmount"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/FineAmount_TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Nature_Of_Offence"
-                android:layout_marginTop="10dp"
-                android:hint="Fine Amount" />
+                android:layout_below="@id/Nature_Of_Offence_TextInputLayout"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/FineAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fine Amount" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Policemen ID -->
-            <EditText
-                android:id="@+id/Policemen_Id"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Policemen_Id_TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/FineAmount"
-                android:layout_marginTop="10dp"
-                android:hint="Policemen Id" />
+                android:layout_below="@id/FineAmount_TextInputLayout"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Policemen_Id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Policemen Id"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:clickable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
 
             <!-- Date -->
@@ -158,7 +204,7 @@
                 android:id="@+id/textViewTime"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:layout_below="@+id/Policemen_Id"
+                android:layout_below="@+id/Policemen_Id_TextInputLayout"
                 android:layout_marginTop="7dp"
                 android:hint="Current Time"
                 android:textSize="18sp"
@@ -168,7 +214,7 @@
                 android:id="@+id/buttonSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Policemen_Id"
+                android:layout_below="@+id/Policemen_Id_TextInputLayout"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="28dp"

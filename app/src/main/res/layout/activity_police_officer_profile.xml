@@ -21,23 +21,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="189dp"
-        android:layout_height="39dp"
+        android:layout_width="287dp"
+        android:layout_height="37dp"
         android:layout_marginStart="110dp"
         android:layout_marginEnd="125dp"
         android:gravity="center"
-        android:text="Officer Profile"
+        android:text="OFFICER PROFILE"
         android:textColor="@color/tx_colors"
-        android:textSize="28sp"
+        android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
-
+        app:layout_constraintVertical_bias="0.023" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardView1"

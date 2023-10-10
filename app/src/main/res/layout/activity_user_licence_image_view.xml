@@ -32,7 +32,7 @@
         android:layout_marginStart="33dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
-        android:text="View Licence Card"
+        android:text="LICENCE CARD"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

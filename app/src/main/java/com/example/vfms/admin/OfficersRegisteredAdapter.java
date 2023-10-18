@@ -1,7 +1,9 @@
 package com.example.vfms.admin;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -73,18 +75,41 @@ public class OfficersRegisteredAdapter extends RecyclerView.Adapter<OfficersRegi
 
     public void deletePoliceOfficer(int position) {
         PoliceOfficer officerToDelete = officerList.get(position);
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("police_officers"); // Change "police_officers" to your Firebase database node
 
-        // Assuming you have a unique identifier for each officer, replace "uniqueId" with the actual field name.
-        String officerIdToDelete = officerToDelete.getUserId();
+        // Create an AlertDialog to confirm the deletion
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Confirm Deletion");
+        builder.setMessage("Are you sure you want to delete this police officer?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // User confirmed deletion
+                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("police_officers");
 
-        // Remove the officer from the Firebase database
-        databaseRef.child(officerIdToDelete).removeValue();
+                // Assuming you have a unique identifier for each officer, replace "uniqueId" with the actual field name.
+                String officerIdToDelete = officerToDelete.getUserId();
 
-        // Remove the officer from the local list as well (optional)
-        officerList.remove(position);
-        notifyItemRemoved(position);
+                // Remove the officer from the Firebase database
+                databaseRef.child(officerIdToDelete).removeValue();
+
+                // Remove the officer from the local list as well (optional)
+                officerList.remove(position);
+                notifyItemRemoved(position);
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // User canceled the deletion
+                dialog.dismiss();
+            }
+        });
+
+        // Display the confirmation dialog
+        builder.show();
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textViewOfficerName;

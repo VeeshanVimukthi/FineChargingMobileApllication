@@ -55,7 +55,9 @@ public class Fine_History extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Implement code to go back to the previous page (Profile_page)
-                onBackPressed();
+                startActivity(new Intent(Fine_History.this, Home_Page.class));
+                finish();
+//                onBackPressed();
             }
         });
 

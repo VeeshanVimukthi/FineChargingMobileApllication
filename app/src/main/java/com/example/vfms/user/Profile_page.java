@@ -89,7 +89,9 @@ public class Profile_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Implement code to go back to the previous page (Profile_page)
-                onBackPressed();
+                startActivity(new Intent(Profile_page.this, Home_Page.class));
+                finish();
+//                onBackPressed();
             }
         });
 

@@ -119,87 +119,157 @@
                 android:clickable="false"
                 android:hint="Fine Amount" />
 
-            <EditText
-                android:id="@+id/editTextCardHolderName"
-                android:layout_width="match_parent"
+
+
+            <RadioGroup
+
+                android:id="@+id/paymentTypeRadioGroup"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ViewFineAmount"
-                android:layout_marginTop="10dp"
-                android:hint="Card Holder Name" />
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutCardNumber"
+                <RadioButton
+                    android:id="@+id/cardPaymentRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Card Payment" />
+
+                <RadioButton
+                    android:id="@+id/postOfficePaymentRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Post Office" />
+            </RadioGroup>
+
+
+            <RelativeLayout
+                android:id="@+id/R1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/editTextCardHolderName"
-                android:layout_marginTop="10dp">
+                android:layout_height="200dp"
+                android:layout_below="@+id/paymentTypeRadioGroup">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextCardNumber"
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutCardHolderName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCardHolderName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Card Number"
+                        android:inputType="number"
+                        android:maxLength="19"
+                        android:visibility="visible" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutCardNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCardNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Card Number"
+                        android:inputType="number"
+                        android:maxLength="19"
+                        android:visibility="visible" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutExpiryDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Card Number"
-                    android:inputType="number"
-                    android:maxLength="19" />
+                    android:layout_below="@+id/textInputLayoutCardNumber"
+                    android:layout_marginTop="10dp">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextExpiryDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="MM/YY"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:visibility="visible" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutExpiryDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textInputLayoutCardNumber"
-                android:layout_marginTop="10dp">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextExpiryDate"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutCCV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="MM/YY"
-                    android:inputType="number"
-                    android:maxLength="5" />
+                    android:layout_below="@+id/textInputLayoutExpiryDate"
+                    android:layout_marginTop="10dp">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCCV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="CCV"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:visibility="visible"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutCCV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textInputLayoutExpiryDate"
-                android:layout_marginTop="10dp">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextCCV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="CCV"
-                    android:inputType="number"
-                    android:maxLength="3"  />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Policemen Number -->
-            <EditText
-                android:id="@+id/editTextPolicemenNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textInputLayoutCCV"
-                android:layout_marginTop="10dp"
-                android:hint="Policemen ID Number" />
-
-
+            </RelativeLayout>
 
             <!-- Pay Button -->
+            <RelativeLayout
+                android:id="@+id/re"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/paymentTypeRadioGroup"
+                android:layout_marginTop="50dp">
+
+                <Button
+                    android:id="@+id/postOfficeImageButton"
+                    android:layout_width="168dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_toEndOf="@+id/postOfficeImageView"
+                    android:background="@color/bt_c"
+                    android:text="Select Image"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/postOfficeImageView"
+                    android:layout_width="110dp"
+                    android:layout_height="98dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@android:drawable/ic_menu_gallery"
+                    android:text="Pay"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+
             <Button
                 android:id="@+id/buttonPay"
                 android:layout_width="301dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextPolicemenNumber"
+                android:layout_below="@+id/R1"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginEnd="36dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="33dp"
+
                 android:background="@drawable/btn_blue"
                 android:text="Pay"
                 android:textColor="@color/white"

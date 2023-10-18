@@ -109,13 +109,6 @@ public class  Police_Register_admin extends AppCompatActivity {
         });
 
 
-        Button openNextPageButton = findViewById(R.id.btnUpdate);
-        openNextPageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNextActivity();
-            }
-        });
     }
 
     private void registerPoliceOfficer() {

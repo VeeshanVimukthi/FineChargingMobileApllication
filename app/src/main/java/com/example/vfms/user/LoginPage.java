@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,7 +45,7 @@ public class LoginPage extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference usersDbRef;
     DatabaseReference policeOfficersDbRef;
-
+    ProgressBar progressBar;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @SuppressLint("CutPasteId")
@@ -56,6 +59,9 @@ public class LoginPage extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btnRegister);
         btnLogin = findViewById(R.id.btnLogin);
         btnForgotPassword = findViewById(R.id.btnForgotPassword); // Initialize Forgot Password button
+
+        progressBar = findViewById(R.id.progressBar);
+
 
         mAuth = FirebaseAuth.getInstance();
         usersDbRef = FirebaseDatabase.getInstance().getReference("Users");
@@ -111,18 +117,24 @@ public class LoginPage extends AppCompatActivity {
         if (TextUtils.isEmpty(email)) {
             userEmail.setError("Email cannot be empty");
             userEmail.requestFocus();
+        } else if (!isValidEmail(email)) {
+            userEmail.setError("Please enter a valid email address");
+            userEmail.requestFocus();
         } else if (TextUtils.isEmpty(password)) {
             userPassword.setError("Password cannot be empty");
             userPassword.requestFocus();
         } else {
+            progressBar.setVisibility(View.VISIBLE);
             if (email.equals("1") && password.equals("1")) {
                 // If the admin credentials are provided, directly open the admin page
                 openAdminPage();
+                progressBar.setVisibility(View.GONE);
             } else {
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            progressBar.setVisibility(View.GONE);
                             FirebaseUser user = mAuth.getCurrentUser();
                             assert user != null;
                             checkUserTypeAndRedirect(user.getUid());
@@ -134,6 +146,11 @@ public class LoginPage extends AppCompatActivity {
             }
         }
     }
+
+    private boolean isValidEmail(String email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
 
     private void checkUserTypeAndRedirect(String userId) {
         usersDbRef.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {

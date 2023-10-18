@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class RegistrationPage extends AppCompatActivity {
+public class  RegistrationPage extends AppCompatActivity {
 
     private EditText userName;
     private EditText userNIC;
@@ -43,6 +44,8 @@ public class RegistrationPage extends AppCompatActivity {
     private ImageView profileImageView;
     private Button selectImageButton;
     private Bitmap selectedImageBitmap;
+
+    private ProgressBar progressBar;
 
     private DatabaseReference userDbRef;
     private FirebaseAuth mAuth;
@@ -64,6 +67,8 @@ public class RegistrationPage extends AppCompatActivity {
         btnRegister = findViewById(R.id.registerButton);
         profileImageView = findViewById(R.id.profileImageView);
         selectImageButton = findViewById(R.id.selectImageButton);
+
+        progressBar = findViewById(R.id.progressBar);
 
         // Initialize Firebase
         userDbRef = FirebaseDatabase.getInstance().getReference("Users");
@@ -173,6 +178,9 @@ public class RegistrationPage extends AppCompatActivity {
             return;
         }
 
+
+        progressBar.setVisibility(View.VISIBLE);
+
         // Create user account with Firebase Authentication
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -197,6 +205,10 @@ public class RegistrationPage extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 // Registration successful, navigate to home page
+
+
+                                                progressBar.setVisibility(View.GONE);
+
                                                 Toast.makeText(RegistrationPage.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                                                 mAuth.signOut();
                                                 startActivity(new Intent(RegistrationPage.this, LoginPage.class));

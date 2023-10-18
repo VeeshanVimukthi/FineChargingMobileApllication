@@ -1,21 +1,20 @@
 package com.example.vfms.police_officer;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.vfms.R;
-import com.example.vfms.user.Fine_History;
 import com.example.vfms.user.LoginPage;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +28,7 @@ public class Police_Officer_Homepage extends AppCompatActivity {
 
     private TextView textViewUserName;
     private ImageView profileImageView; // ImageView for the profile image
+    private Dialog popupDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,6 @@ public class Police_Officer_Homepage extends AppCompatActivity {
 
         textViewUserName = findViewById(R.id.ViewTextP);
         profileImageView = findViewById(R.id.profilePictureImageView); // Initialize the ImageView
-
 
         ImageButton profileButton = findViewById(R.id.profilePictureImageView);
         profileButton.setOnClickListener(view -> {
@@ -109,13 +108,22 @@ public class Police_Officer_Homepage extends AppCompatActivity {
             startActivity(new Intent(Police_Officer_Homepage.this, Officer_Impose_Fine_History.class));
         });
 
-
-
         // Add logout button click listener
         ImageButton btnLogout = findViewById(R.id.logoutBtn);
         btnLogout.setOnClickListener(view -> {
             // Show the logout confirmation dialog
             showLogoutConfirmationDialog();
+        });
+
+        // Find a button to trigger the pop-up window
+        Button openPopupButton = findViewById(R.id.infoButton);
+
+        // Set a click listener to display the pop-up window
+        openPopupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayPopup(v);
+            }
         });
     }
 
@@ -127,7 +135,9 @@ public class Police_Officer_Homepage extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Call the logout method to sign out the user
+                finish();
                 logout();
+
             }
         });
 
@@ -149,5 +159,21 @@ public class Police_Officer_Homepage extends AppCompatActivity {
         // Navigate back to the login page or any other desired page
         startActivity(new Intent(Police_Officer_Homepage.this, LoginPage.class));
         finish(); // Optional: This will close the current activity, so the user cannot go back to the homepage using the back button.
+    }
+
+    public void displayPopup(View view) {
+        // Create a Dialog with your custom layout
+        popupDialog = new Dialog(this);
+        popupDialog.setContentView(R.layout.popup_layout);
+
+        // Show the pop-up window
+        popupDialog.show();
+    }
+
+    public void closePopup(View view) {
+        // Close the pop-up window when the "Close" button is clicked
+        if (popupDialog != null && popupDialog.isShowing()) {
+            popupDialog.dismiss();
+        }
     }
 }
